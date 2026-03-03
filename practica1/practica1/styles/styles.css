@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:wght@400;600&display=swap');
+
+:root {
+    --color-primaria: #0D0D0D;        /* Negro*/
+    --color-secundaria: #FCE4EC;       /* Rosa claro*/
+    --color-terciaria: #E91E63;        /* Rosa fucsia */
+    --color-hover: #F8BBD0;            /* Rosa pastel */
+    --color-detalle: #D81B60;          /* Rosa polvo */
+
+    --fuente-krona: 'Krona One', sans-serif;
+    --fuente-montserrat: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-primaria);
+    color: var(--color-secundaria);
+    font-family: var(--fuente-montserrat);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    padding: 2% 0% 0% 10%;
+}
+
+.header__menu {
+    display: flex;
+    gap: 50px;
+}
+
+.header__menu__link {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-terciaria);
+    text-decoration: none;
+    font-family: var(--fuente-montserrat);
+    transition: all 0.3s ease;
+}
+
+.header__menu__link:hover {
+    color: var(--color-hover);
+    transform: scale(1.05);
+}
+
+/* Main content */
+.presentacion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5% 10%;
+    gap: 50px;
+    flex: 1;
+}
+
+.presentacion__contenido {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 30 px;
+}
+
+.presentacion__contenido__titulo {
+    font-size: 2rem;
+    font-family: var(--fuente-krona);
+    color: var(--color-secundaria);
+    line-height: 1.3;
+}
+
+.titulo-destaque {
+    color: var(--color-terciaria);
+    border-bottom: 3px solid var(--color-detalle);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.presentacion__contenido__texto {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-secundaria);
+    opacity: 0.9;
+}
+
+/* Enlaces / Redes sociales */
+.presentacion__enlaces {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.presentacion__enlaces__subtitulo {
+    font-family: var(--fuente-krona);
+    font-size: 1.2rem;
+    color: var(--color-hover);
+    font-weight: 400;
+}
+
+.presentacion__enlaces__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 2px solid var(--color-terciaria);
+    background-color: transparent;
+    width: 100%;
+    text-align: center;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 15px 0;
+    text-decoration: none;
+    color: var(--color-secundaria);
+    transition: all 0.3s ease;
+}
+
+.presentacion__enlaces__link:hover {
+    background-color: var(--color-hover);
+    color: var(--color-primaria);
+    border-color: var(--color-detalle);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(232, 62, 140, 0.4);
+}
+
+.presentacion__enlaces__link img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+}
+
+.presentacion__enlaces__link:hover img {
+    filter: brightness(0);
+}
+
+/* Imagen */
+.presentacion__imagen {
+    width: 40%;
+    border-radius: 30px;
+    border: 3px solid var(--color-terciaria);
+    box-shadow: 0 0 25px rgba(233, 30, 99, 0.3);
+    transition: all 0.3s ease;
+}
+
+.presentacion__imagen:hover {
+    border-color: var(--color-detalle);
+    box-shadow: 0 0 35px rgba(216, 27, 96, 0.5);
+    transform: scale(1.02);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--color-detalle);
+    padding: 20px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-secundaria);
+    margin-top: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header {
+        padding: 10% 0% 0% 5%;
+    }
+    
+    .header__menu {
+        gap: 30px;
+    }
+    
+    .presentacion {
+        flex-direction: column-reverse;
+        padding: 5%;
+    }
+    
+    .presentacion__contenido {
+        width: 100%;
+    }
+    
+    .presentacion__imagen {
+        width: 80%;
+    }
+}
