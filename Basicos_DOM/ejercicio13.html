@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 13 PREVENT DEFAULT</title>
+</head>
+<body>
+    <div id="enlace"><a href="https://www.google.com"></a>Enlace</div>
+    <script>
+        const enlace=document.getElementById('enlace')
+        enlace.addEventListener('click',(evento)=>{
+            evento.preventDefault()
+            alert('Enlace bloqueado')
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 4 QUERYSELECTORALL</title>
+</head>
+<body>
+    <P>Nombre 1</P>
+    <P>Nombre 2</P>
+    <P>Nombre 3</P>
+    <script>
+        const elementos=document.querySelectorAll('p')//llamando a todos los elementos p o etiquetas del mismo tipo
+        elementos.forEach(elemento=>{
+            elemento.style.backgroundColor='blue'
+        })
+    </script>
+</body>
+</html>
