@@ -1,0 +1,316 @@
+/* style.css - Versión ultra compacta CON logo coloreado en hover */
+body {
+	background: #0A0A0A;
+	font-family: 'Open Sans', sans-serif;
+	color: #FFF;
+	background-image: radial-gradient(circle at 10% 20%, rgba(255,20,147,0.1) 0%, transparent 20%);
+}
+
+.container { width: 94%; margin: 0 auto; }
+
+/* Header */
+.headerPrincipal {
+	background: #000;
+	padding: 20px 0;
+	border-bottom: 3px solid;
+	border-image: linear-gradient(90deg, #FF1493, #00FFFF, #4169E1) 1;
+	box-shadow: 0 0 20px rgba(255,20,147,0.3);
+}
+
+.headerPrincipal-titulo {
+	font-weight: bold;
+	font-size: 2.2em;
+	margin-bottom: 20px;
+	text-shadow: 0 0 10px #FF1493;
+}
+
+.headerPrincipal-titulo a {
+	text-decoration: none;
+	color: #FFF;
+	transition: 0.3s;
+}
+
+.headerPrincipal-titulo a:hover {
+	color: #FF1493;
+	text-shadow: 0 0 15px #FF1493;
+}
+
+.headerPrincipal-nav-link {
+	padding: 12px 25px;
+	margin-bottom: 10px;
+	color: #FFF;
+	text-decoration: none;
+	transition: 0.3s;
+	display: block;
+	border: 2px solid transparent;
+	border-radius: 30px;
+	font-weight: 600;
+}
+
+.headerPrincipal-nav-link:hover {
+	background: linear-gradient(135deg, #FF1493, #4169E1);
+	border-color: #00FFFF;
+	transform: translateY(-3px);
+	box-shadow: 0 5px 20px rgba(255,20,147,0.6);
+}
+
+/* Títulos */
+.subtitulo {
+	font-weight: bold;
+	font-size: 36px;
+	margin: 25px auto;
+	text-align: center;
+	background: linear-gradient(135deg, #FF1493, #00FFFF, #4169E1);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: gradient 5s infinite;
+	width: fit-content;
+}
+
+@keyframes gradient { 
+	0% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+	100% { background-position: 0% 50%; }
+}
+
+.subtitulo::after {
+	content: '';
+	display: block;
+	width: 150px;
+	height: 4px;
+	background: linear-gradient(90deg, #FF1493, #00FFFF, #4169E1);
+	margin: 15px auto;
+	box-shadow: 0 0 15px #FF1493;
+}
+
+/* Productos - CON LOGO COLOR EN HOVER */
+.contenidoPrincipal-productos-link {
+	height: 140px;
+	background: linear-gradient(145deg, #111, #1E1E1E);
+	text-align: center;
+	margin: 1%;
+	transition: 0.4s;
+	border-radius: 20px;
+	position: relative;
+	overflow: hidden;
+	border: 1px solid rgba(255,20,147,0.3);
+	box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.contenidoPrincipal-productos-link:hover {
+	transform: scale(1.05) translateY(-5px);
+	box-shadow: 0 15px 30px rgba(255,20,147,0.5);
+}
+
+.contenidoPrincipal-productos-link a {
+	text-decoration: none;
+	color: #FFF;
+	font-weight: bold;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+.contenidoPrincipal-productos-link a:before {
+	content: '';
+	display: block;
+	width: 60px;
+	height: 60px;
+	margin: 5px auto;
+	filter: brightness(0) invert(1); /* Logo blanco por defecto */
+	transition: 0.3s;
+}
+
+/* ¡IMPORTANTE! Logo se colorea en hover */
+.contenidoPrincipal-productos-link:hover a:before {
+	filter: none; /* Quita el filtro blanco, muestra color original */
+	transform: scale(1.2);
+}
+
+.contenidoPrincipal-productos-link:nth-child(even) a:before {
+	background: url('../img/background1.svg') no-repeat center/contain;
+}
+
+.contenidoPrincipal-productos-link:nth-child(odd) a:before {
+	background: url('../img/background2.svg') no-repeat center/contain;
+}
+
+/* Video */
+.videoSobre {
+	background: linear-gradient(135deg, #000, #1a0f1a);
+	padding: 50px 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.videoSobre-video {
+	max-width: 100%;
+	border-radius: 20px;
+	box-shadow: 0 0 30px rgba(255,20,147,0.5);
+	border: 2px solid rgba(255,20,147,0.5);
+}
+
+.videoSobre-sobre-title {
+	font-size: 2.2em;
+	font-weight: bolder;
+	background: linear-gradient(135deg, #FF1493, #00FFFF);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	margin-bottom: 25px;
+}
+
+.videoSobre-sobre-item {
+	font-size: 1.3em;
+	line-height: 2.2;
+	padding-left: 30px;
+	position: relative;
+	color: #FFF;
+	transition: 0.3s;
+}
+
+.videoSobre-sobre-item:hover {
+	transform: translateX(10px);
+	color: #00FFFF;
+}
+
+.videoSobre-sobre-item::before {
+	content: '▶';
+	color: #FF1493;
+	position: absolute;
+	left: 0;
+	text-shadow: 0 0 10px #FF1493;
+}
+
+.videoSobre-button {
+	border-radius: 40px;
+	background: linear-gradient(135deg, #FF1493, #4169E1);
+	color: #FFF;
+	border: none;
+	height: 60px;
+	font-size: 1.2em;
+	font-weight: bold;
+	padding: 0 50px;
+	cursor: pointer;
+	transition: 0.3s;
+	margin-top: 25px;
+	box-shadow: 0 5px 20px rgba(255,20,147,0.5);
+}
+
+.videoSobre-button:hover {
+	transform: translateY(-5px) scale(1.05);
+	box-shadow: 0 10px 30px rgba(255,20,147,0.8);
+}
+
+/* Footer */
+.rodapePrincipal {
+	background: #000;
+	padding-top: 40px;
+	border-top: 3px solid #00FFFF;
+	box-shadow: 0 -10px 30px rgba(0,255,255,0.2);
+}
+
+.rodapePrincipal-navMap-link {
+	text-decoration: none;
+	color: #CCC;
+	margin: 8px 0;
+	display: inline-block;
+	transition: 0.3s;
+	padding: 8px 15px;
+	border-radius: 20px;
+	background: rgba(255,255,255,0.05);
+}
+
+.rodapePrincipal-navMap-link:hover {
+	color: #000;
+	background: linear-gradient(135deg, #FF1493, #00FFFF);
+	transform: translateX(10px);
+	box-shadow: 0 0 20px #FF1493;
+}
+
+.navmap-list-title {
+	font-weight: 700;
+	font-size: 1.5em;
+	margin: 20px 0 15px;
+	padding: 10px 20px;
+	background: rgba(255,20,147,0.1);
+	border-radius: 10px;
+	display: inline-block;
+	border: 1px solid rgba(255,20,147,0.3);
+}
+
+/* Colores marcas */
+.navmap-list-title-zara { color: #FF1493; border-left: 5px solid #FF1493; }
+.navmap-list-title-adidas { color: #4169E1; border-left: 5px solid #00FFFF; }
+.navmap-list-title-nike { color: #00FFFF; border-left: 5px solid #4169E1; }
+.navmap-list-title-polo { color: #FF69B4; border-left: 5px solid #FF1493; }
+
+/* Patrocinadores */
+.rodapePrincipal-patrocinadores {
+	margin-top: 50px;
+	background: linear-gradient(135deg, #0A0A0A, #1a0f1a);
+	padding: 40px 0;
+}
+
+.rodapePrincipal-patrocinadores-list-link {
+	display: block;
+	padding: 20px;
+	background: #111;
+	border-radius: 50%;
+	transition: 0.4s;
+	border: 2px solid transparent;
+}
+
+.rodapePrincipal-patrocinadores-list-link:hover {
+	transform: rotate(360deg) scale(1.2);
+	border-color: #FF1493;
+	box-shadow: 0 0 30px #FF1493;
+}
+
+/* Formulario */
+.rodapePrincipal-contatoForm-legend {
+	font-size: 1.3em;
+	color: #FFF;
+	margin-bottom: 20px;
+	font-weight: bold;
+	text-shadow: 0 0 10px #FF1493;
+}
+
+.rodapePrincipal-contatoForm-emailInput {
+	border-radius: 30px;
+	padding: 15px 25px;
+	background: #111;
+	border: 2px solid #4169E1;
+	color: #FFF;
+	font-size: 16px;
+	min-width: 250px;
+	transition: 0.3s;
+}
+
+.rodapePrincipal-contatoForm-emailInput:focus {
+	outline: none;
+	border-color: #FF1493;
+	box-shadow: 0 0 25px rgba(255,20,147,0.6);
+	background: #1E1E1E;
+}
+
+.rodapePrincipal-contatoForm-submit {
+	border-radius: 30px;
+	padding: 15px 35px;
+	background: linear-gradient(135deg, #FF1493, #4169E1);
+	color: #FFF;
+	font-weight: bold;
+	cursor: pointer;
+	border: none;
+	font-size: 16px;
+	transition: 0.3s;
+	box-shadow: 0 5px 15px rgba(255,20,147,0.4);
+}
+
+.rodapePrincipal-contatoForm-submit:hover {
+	transform: scale(1.05);
+	box-shadow: 0 8px 25px rgba(255,20,147,0.8);
+	background: linear-gradient(135deg, #4169E1, #FF1493);
+}
