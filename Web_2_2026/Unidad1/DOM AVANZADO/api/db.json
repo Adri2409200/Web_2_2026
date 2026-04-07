@@ -1,0 +1,27 @@
+{
+  "tareas": [
+    {
+      "id": "1",
+      "task": "Ejemplo de tarea",
+      "description": "Esta es una tarea de ejemplo",
+      "date": "2024-12-31",
+      "priority": "Alta",
+      "categoria": "Trabajo",
+      "responsable": "Juan Pérez",
+      "progreso": 50,
+      "completed": false
+    },
+    {
+      "task": "fefef",
+      "description": "efef",
+      "date": "2026-04-06",
+      "priority": "fef",
+      "categoria": "efe",
+      "responsable": "fef",
+      "progreso": 56,
+      "completed": false,
+      "id": "rZTs3GHYM10"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

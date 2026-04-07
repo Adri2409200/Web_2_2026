@@ -1,0 +1,83 @@
+{
+  "posts": [
+    {
+      "titulo": "CambioN1",
+      "descripcion": "cambioN1",
+      "fecha": "2026-03-23T14:02:07.634Z",
+      "id": "2"
+    },
+    {
+      "titulo": "nuevo post",
+      "descripcion": "es un nuevo post creado",
+      "fecha": "2026-03-23T13:30:11.014Z",
+      "id": "B0-wLeB7GLY"
+    },
+    {
+      "titulo": "nuevo post",
+      "descripcion": "es un nuevo post creado",
+      "fecha": "2026-03-23T13:30:12.907Z",
+      "id": "ihNUWq2AAoY"
+    },
+    {
+      "titulo": "nuevo post",
+      "descripcion": "es un nuevo post creado",
+      "fecha": "2026-03-23T13:30:14.583Z",
+      "id": "xSK1Gt2fszI"
+    },
+    {
+      "titulo": "nuevo post",
+      "descripcion": "es un nuevo post creado",
+      "fecha": "2026-03-23T13:31:04.328Z",
+      "id": "9Pt2TPKw1DI"
+    },
+    {
+      "titulo": "nuevo post",
+      "descripcion": "es un nuevo post creado",
+      "fecha": "2026-03-23T13:31:17.352Z",
+      "id": "Y7fEIsyV6A0"
+    },
+    {
+      "titulo": "nuevo post",
+      "descripcion": "es un nuevo post creado",
+      "fecha": "2026-03-23T13:31:18.964Z",
+      "id": "aPJaamObGHQ"
+    },
+    {
+      "titulo": "nuevo post",
+      "descripcion": "es un nuevo post creado",
+      "fecha": "2026-03-23T13:31:42.485Z",
+      "id": "-ndof7GKK6Q"
+    },
+    {
+      "titulo": "nuevo post",
+      "descripcion": "es un nuevo post creado",
+      "fecha": "2026-03-23T13:35:08.609Z",
+      "id": "-CrYeJOBCC0"
+    },
+    {
+      "titulo": "nuevo post",
+      "descripcion": "es un nuevo post creado",
+      "fecha": "2026-03-23T13:46:31.911Z",
+      "id": "qbhh8BDPTe4"
+    },
+    {
+      "titulo": "nuevo post",
+      "descripcion": "es un nuevo post creado",
+      "fecha": "2026-03-23T13:49:10.501Z",
+      "id": "egyx-FXfD-s"
+    },
+    {
+      "titulo": "nuevo post",
+      "descripcion": "es un nuevo post creado",
+      "fecha": "2026-03-23T13:58:45.972Z",
+      "id": "SNIaIOfaHVY"
+    },
+    {
+      "titulo": "Intento",
+      "descripcion": "IntentoN1",
+      "fecha": "2026-03-23T14:00:54.313Z",
+      "id": "57HvEbJHVVU"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

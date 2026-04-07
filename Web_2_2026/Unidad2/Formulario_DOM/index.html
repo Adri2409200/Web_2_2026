@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Formulario del Caos Absoluto</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="chaos-container">
+        <!-- Título confuso con movimiento -->
+        <div class="confusing-header" id="movingHeader">
+            <h1>¿FORMULARIO?</h1>
+            <div class="floating-text">❄️🔥⚡🌊🌀</div>
+        </div>
+
+        <!-- El formulario más odioso jamás creado -->
+        <div class="evil-form-wrapper" id="formWrapper">
+            <form id="tortureForm" onsubmit="return false;">
+                <!-- Campo 1: NOMBRE - con requisitos absurdos -->
+                <div class="form-field nightmare-field" id="nameField">
+                    <div class="field-torture">
+                        <button type="button" class="mystery-button" id="nameHintBtn">???</button>
+                        <div class="moving-label" id="nameLabel">⬅️⬆️➡️⬇️</div>
+                        <input type="text" id="inputNombre" class="chaos-input" autocomplete="off">
+                        <div class="confusing-rules">
+                            <span id="nameRule1">[requisito oculto #1]</span>
+                            <span id="nameRule2" style="display:none;">[requisito oculto #2]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campo 2: CURSO - selector que se mueve solo -->
+                <div class="form-field nightmare-field" id="courseField">
+                    <div class="field-torture">
+                        <div class="blinking-text">SELECCIONE ████</div>
+                        <select id="inputCurso" class="moving-select">
+                            <option value="">[opción invisible]</option>
+                            <option value="Curso 1">Curso 1</option>
+                            <option value="Curso 2">Curso 2</option>
+                            <option value="Curso 3">Curso 3</option>
+                            <option value="Curso 4">Curso 4</option>
+                        </select>
+                        <div class="fake-options" id="fakeOptions"></div>
+                    </div>
+                </div>
+
+                <!-- Campo 3: EDAD - con controles contradictorios -->
+                <div class="form-field nightmare-field" id="ageField">
+                    <div class="field-torture">
+                        <div class="counter-intuitive">
+                            <button type="button" id="ageUp" class="tiny-btn">▲</button>
+                            <button type="button" id="ageDown" class="tiny-btn">▼</button>
+                            <button type="button" id="ageRandom" class="tiny-btn">🎲</button>
+                            <button type="button" id="ageReverse" class="tiny-btn">↺</button>
+                        </div>
+                        <input type="text" id="inputEdad" class="chaos-input" value="???" readonly>
+                        <div class="age-confusion" id="ageConfusion">[edad no es número]</div>
+                    </div>
+                </div>
+
+                <!-- Campo 4: HERMANOS - sistema de diales locos -->
+                <div class="form-field nightmare-field" id="siblingsField">
+                    <div class="field-torture">
+                        <div class="dial-system">
+                            <div class="dial" id="dial1" data-value="0"></div>
+                            <div class="dial" id="dial2" data-value="0"></div>
+                            <div class="dial" id="dial3" data-value="0"></div>
+                        </div>
+                        <input type="text" id="inputHermanos" class="chaos-input" value="0" readonly>
+                        <div class="dial-hint">[gira los diales]</div>
+                    </div>
+                </div>
+
+                <!-- Campo 5: CIUDAD - laberinto de letras -->
+                <div class="form-field nightmare-field" id="cityField">
+                    <div class="field-torture">
+                        <div class="letter-maze" id="letterMaze">
+                            <div class="maze-row" data-row="0">
+                                <button type="button" class="letter-btn" data-letter="A">A</button>
+                                <button type="button" class="letter-btn" data-letter="B">B</button>
+                                <button type="button" class="letter-btn" data-letter="C">C</button>
+                                <button type="button" class="letter-btn" data-letter="D">D</button>
+                            </div>
+                            <div class="maze-row" data-row="1">
+                                <button type="button" class="letter-btn" data-letter="E">E</button>
+                                <button type="button" class="letter-btn" data-letter="F">F</button>
+                                <button type="button" class="letter-btn" data-letter="G">G</button>
+                                <button type="button" class="letter-btn" data-letter="H">H</button>
+                            </div>
+                            <div class="maze-row" data-row="2">
+                                <button type="button" class="letter-btn" data-letter="I">I</button>
+                                <button type="button" class="letter-btn" data-letter="J">J</button>
+                                <button type="button" class="letter-btn" data-letter="K">K</button>
+                                <button type="button" class="letter-btn" data-letter="L">L</button>
+                            </div>
+                        </div>
+                        <input type="text" id="inputCiudad" class="chaos-input" readonly placeholder="construye tu ciudad">
+                        <button type="button" id="clearCityBtn" class="tiny-btn">🗑️</button>
+                    </div>
+                </div>
+
+                <!-- Botones de acción - todos confusos -->
+                <div class="action-zone">
+                    <button type="button" id="submitBtn" class="chaos-button" style="transform: rotate(2deg);">⚠️ NO HAGAS CLICK ⚠️</button>
+                    <button type="button" id="fakeSubmitBtn" class="chaos-button fake">[ENVIAR]</button>
+                    <button type="button" id="mysteryBtn" class="chaos-button">¿¿¿???</button>
+                    <div class="button-group">
+                        <button type="button" id="showBtn" class="small-chaos">MOSTRAR</button>
+                        <button type="button" id="editLastBtn" class="small-chaos">EDITAR</button>
+                        <button type="button" id="deleteRandomBtn" class="small-chaos">ELIMINAR</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Panel de registros - desordenado -->
+        <div class="records-chaos">
+            <div class="records-header-chaos">
+                <div class="spinning-title">REGISTROS</div>
+                <button id="clearAllBtn" class="tiny-danger">🔥🔥🔥</button>
+            </div>
+            <div id="recordsContainer" class="records-list">
+                <div class="empty-chaos">[vacío dimensional]</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mensajes de error confusos -->
+    <div id="chaosToast" class="chaos-toast"></div>
+
+    <script src="componentes/script.js"></script>
+</body>
+</html>
