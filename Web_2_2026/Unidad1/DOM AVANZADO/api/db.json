@@ -1,0 +1,16 @@
+{
+  "tareas": [
+    {
+      "task": "sfsf",
+      "description": "sf",
+      "date": "2026-04-07",
+      "priority": "sf",
+      "categoria": "sfsf",
+      "responsable": "sf",
+      "progreso": 67,
+      "completed": false,
+      "id": "oqt-4OEWJOA"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
