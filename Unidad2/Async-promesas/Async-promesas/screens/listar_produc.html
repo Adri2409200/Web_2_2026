@@ -2,7 +2,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doguito Petshop | Productos</title>
+    <link rel="icon" href="../assets/img/doguitoadm.svg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/base/base.css">
     <link rel="stylesheet" href="../assets/css/componentes/header.css">
     <link rel="stylesheet" href="../assets/css/lista_cliente.css">
@@ -15,41 +19,30 @@
         <nav>
             <ul class="header__list-nav">
                 <li class="header__link"><a href="#">Dashboard</a></li>
-                <li class="header__link"><a href="./lista_productos.html">Productos</a></li>
-                <li class="header__link"><a href="./lista_cliente.html">Clientes</a></li>
-                <li class="header__link"><a href="./lista_pets.html">Pets</a></li>
+                <li class="header__link"><a href="./listar_produc.html">Productos</a></li>
+                <li class="header__link"><a href="./listar_cliente.html">Clientes</a></li>
+                <li class="header__link"><a href="./listar_pets.html">Pets</a></li>
             </ul>
         </nav>
     </header>
-
-    <main class="container">
-    <div class="flex flex--column card">
-        <div class="flex flex--between flex--center" style="padding: 1rem 2rem;">
-            <h1 class="card__title" style="margin: 0;">Inventario de Productos</h1>
-            
+    <main class="clientes-container">
+        <h1 class="card__title">Lista de Productos</h1>
+        <div class="table-actions">
+            <a href="./registro_produc.html" class="simple-button simple-button--add">Nuevo Producto</a>
         </div>
-        
         <table class="table">
             <thead>
                 <tr>
                     <th class="table__column--p">ID</th>
                     <th class="table__column--p">Nombre</th>
-                    <th class="table__column--g">Descripción</th>
                     <th class="table__column--p">Precio</th>
-                    <th class="table__column--m table__align--right">
-                        <a
-                            href="./registrar_producto.html"
-                            class="simple-button simple-button--add"
-                            >Nuevo Producto</a
-                        >
-                    </th>
-                    </tr>      
+                    <th class="table__column--m">Acciones</th>
+                </tr>
             </thead>
-            <tbody data-table-products>
-                </tbody>
+            <tbody data-table-products></tbody>
         </table>
-    </div>
-</main>
-    <script type="module" src="../controllers/producto_controller.js"></script>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
+    <script type="module" src="../controllers/produc_controller.js"></script>
 </body>
 </html>

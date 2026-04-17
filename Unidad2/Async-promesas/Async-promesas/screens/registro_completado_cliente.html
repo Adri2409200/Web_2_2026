@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doguito Petshop | Mascotas</title>
+    <title>Doguito Petshop | Registro concluido - Cliente</title>
     <link rel="icon" href="../assets/img/doguitoadm.svg" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/base/base.css">
     <link rel="stylesheet" href="../assets/css/componentes/header.css">
-    <link rel="stylesheet" href="../assets/css/lista_cliente.css">
-    <link rel="stylesheet" href="../assets/css/componentes/table.css">
+    <link rel="stylesheet" href="../assets/css/register_complete.css">
+    <link rel="stylesheet" href="../assets/css/componentes/card.css">
     <link rel="stylesheet" href="../assets/css/componentes/button.css">
 </head>
 <body>
@@ -25,26 +25,14 @@
             </ul>
         </nav>
     </header>
-    <main class="clientes-container">
-        <h1 class="card__title">Lista de Mascotas</h1>
-        <div class="table-actions">
-            <a href="./registro_pets.html" class="simple-button simple-button--add">Nueva Mascota</a>
-        </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th class="table__column--p">Nombre</th>
-                    <th class="table__column--p">Edad</th>
-                    <th class="table__column--p">Raza</th>
-                    <th class="table__column--p">Peso</th>
-                    <th class="table__column--g">Dueño</th>
-                    <th class="table__column--m">Acciones</th>
-                </tr>
-            </thead>
-            <tbody data-table-pets></tbody>
-        </table>
+    <main class="container flex flex--column flex--center">
+        <section class="register-card card">
+            <span class="register-card__icon-complete"></span>
+            <h1 class="register-card__title card__title">
+                ¡Cliente registrado con éxito!
+            </h1>
+            <a href="./listar_cliente.html" class="button">Ver Clientes</a>
+        </section>
     </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
-    <script type="module" src="../controllers/pets_controller.js"></script>
 </body>
 </html>

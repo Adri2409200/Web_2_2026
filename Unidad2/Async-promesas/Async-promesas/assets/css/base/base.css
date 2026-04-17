@@ -26,6 +26,14 @@ body {
   flex-direction: column;
 }
 
+.flex--between {
+  justify-content: space-between;
+}
+
+.flex--center {
+  align-items: center;
+}
+
 @media (min-width: 800px) {
   .container {
     padding-right: 2.5rem;

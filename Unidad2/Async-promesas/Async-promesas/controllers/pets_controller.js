@@ -1,35 +1,32 @@
-import { petService } from "../service/pet-service.js";
+import { petService } from "../service/pets_service.js";
 
-const crearFilaMascota = async (nombre, edad, raza, peso, dueñoId, id) => {
+const crearFilaMascota = async (nombre, raza, edad, peso, dueñoId, id) => {
     const fila = document.createElement('tr');
     
     let informacionDueño = "Cargando...";
     try {
         const dueño = await petService.obtenerDueño(dueñoId);
-        informacionDueño = `${dueño.nombre} (${dueño.email})`;
-    } catch (evento) {
-        informacionDueño = "No encontrado";
+        informacionDueño = dueño ? `${dueño.nombre}` : "No encontrado";
+    } catch (error) {
+        informacionDueño = "Error";
     }
 
     const contenido = `
-        <td class="td">${nombre}</td>
-        <td>${edad}</td>
-        <td>${raza}</td>
-        <td>${peso}</td>
-        <td>${informacionDueño}</td>
-        <td>
+        <td class="td">${escapeHtml(nombre)}</td>
+        <td class="td">${edad}</td>
+        <td class="td">${escapeHtml(raza)}</td>
+        <td class="td">${peso} kg</td>
+        <td class="td">${escapeHtml(informacionDueño)}</td>
+        <td class="td">
             <ul class="table__button-control">
                 <li>
-                    <a
-                        href="../screens/editar_pet.html?id=${id}"
-                        class="simple-button simple-button--edit"
-                    >
-                    Editar
+                    <a href="../screens/editar_pet.html?id=${id}" class="simple-button simple-button--edit">
+                        Editar
                     </a>
                 </li>
                 <li>
-                    <button class="simple-button simple-button--delete" type="button" id="${id}">
-                    Eliminar
+                    <button class="simple-button simple-button--delete" type="button" data-id="${id}">
+                        Eliminar
                     </button>
                 </li>
             </ul>
@@ -37,22 +34,53 @@ const crearFilaMascota = async (nombre, edad, raza, peso, dueñoId, id) => {
     `;
     fila.innerHTML = contenido;
     
-    const btn = fila.querySelector("button");
-    btn.addEventListener("click", () => {
-        const idMascota = btn.id;
-        petService.eliminarMascota(idMascota).then(respuesta => {
-            alert("Mascota eliminada");
-            window.location.reload();
-        }).catch(error => alert("Error al eliminar"));
+    const btnEliminar = fila.querySelector("button");
+    btnEliminar.addEventListener("click", async () => {
+        if (confirm("¿Estás seguro de eliminar esta mascota?")) {
+            try {
+                await petService.eliminarMascota(id);
+                fila.remove();
+                alert("Mascota eliminada");
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Error al eliminar");
+            }
+        }
     });
     
     return fila;
-}
+};
 
-const table = document.querySelector("[data-table-pets]");
-petService.listaMascotas().then((data) => {
-    data.forEach(async (pet) => {
-        const nuevaFila = await crearFilaMascota(pet.nombre, pet.edad, pet.raza, pet.peso, pet.dueñoId, pet.id);
-        table.appendChild(nuevaFila);
-    });
-});
+const escapeHtml = (text) => {
+    if (!text) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+};
+
+const cargarMascotas = async () => {
+    const table = document.querySelector("[data-table-pets]");
+    if (!table) return;
+
+    try {
+        const mascotas = await petService.listaMascotas();
+        table.innerHTML = '';
+        
+        for (const mascota of mascotas) {
+            const fila = await crearFilaMascota(
+                mascota.nombre, 
+                mascota.raza, 
+                mascota.edad, 
+                mascota.peso, 
+                mascota.dueñoId, 
+                mascota.id
+            );
+            table.appendChild(fila);
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        table.innerHTML = '<tr><td colspan="6">Error al cargar mascotas</td></tr>';
+    }
+};
+
+cargarMascotas();

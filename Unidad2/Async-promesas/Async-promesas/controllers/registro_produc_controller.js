@@ -1,21 +1,28 @@
-import { productoService } from "../service/producto-service.js";
+import { productoService } from "../service/product_service.js";
 
 const formulario = document.querySelector('[data-form-product]');
 
-formulario.addEventListener("submit", (evento) => {
+formulario.addEventListener("submit", async (evento) => {
     evento.preventDefault();
     
-    const nombre = document.querySelector("[data-nombre]").value;
+    const nombre = document.querySelector("[data-nombre]").value.trim();
     const precio = document.querySelector("[data-precio]").value;
-    const descripcion = document.querySelector("[data-descripcion]").value;
 
-    productoService.crearProducto(nombre, precio, descripcion)
-        .then(() => {
-            console.log("Producto guardado con éxito");
-            window.location.href = "./registro_completado.html";
-        })
-        .catch((err) => {
-            alert("Hubo un error al guardar. Revisa la consola.");
-            console.log(err);
-        });
+    if (!nombre || !precio) {
+        alert("Por favor, completa todos los campos");
+        return;
+    }
+
+    if (isNaN(precio) || precio <= 0) {
+        alert("Precio inválido");
+        return;
+    }
+
+    try {
+        await productoService.crearProducto(nombre, precio);
+        window.location.href = "./registro_completado_producto.html";
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Error al registrar producto");
+    }
 });

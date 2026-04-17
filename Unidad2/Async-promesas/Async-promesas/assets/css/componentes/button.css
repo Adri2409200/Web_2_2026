@@ -16,6 +16,12 @@
 .simple-button {
   border: none;
   background-color: unset;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.simple-button:hover {
+  opacity: 0.7;
 }
 
 .simple-button--add {
@@ -28,4 +34,24 @@
 
 .simple-button--edit {
   color: var(--sucess-color);
+}
+
+.table-actions {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.simple-button--add {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 7px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.simple-button--add:hover {
+  background-color: #1c5bbf;
+  opacity: 1;
 }

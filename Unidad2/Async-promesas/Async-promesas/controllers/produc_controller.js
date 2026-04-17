@@ -1,25 +1,21 @@
-import { productoService } from "../service/producto-service.js";
+import { productoService } from "../service/product_service.js";
 
-const crearFila = (id, nombre, descripcion, precio) => {
+const crearFila = (id, nombre, precio) => {
     const fila = document.createElement("tr");
     const contenido = `
-        <td class="td" data-td>${id}</td>
-        <td>${nombre}</td>
-        <td>${descripcion}</td>
-        <td>bs.${precio}</td>
-        <td>
+        <td class="td">${id}</td>
+        <td class="td">${escapeHtml(nombre)}</td>
+        <td class="td">Bs. ${precio}</td>
+        <td class="td">
             <ul class="table__button-control">
                 <li>
-                    <a
-                        href="../screens/editar_producto.html?id=${id}"
-                        class="simple-button simple-button--edit"
-                    >
-                    Editar
+                    <a href="../screens/editar_producto.html?id=${id}" class="simple-button simple-button--edit">
+                        Editar
                     </a>
                 </li>
                 <li>
-                    <button class="simple-button simple-button--delete" type="button" id="${id}">
-                    Eliminar
+                    <button class="simple-button simple-button--delete" type="button" data-id="${id}">
+                        Eliminar
                     </button>
                 </li>
             </ul>
@@ -27,22 +23,39 @@ const crearFila = (id, nombre, descripcion, precio) => {
     `;
     fila.innerHTML = contenido;
     
-    const btn = fila.querySelector("button");
-    btn.addEventListener("click", () => {
-        const idProducto = btn.id;
-        productoService.eliminarProducto(idProducto).then(respuesta => {
-            alert("Producto eliminado");
-            window.location.reload();
-        }).catch(error => alert("Error al eliminar"));
+    const btnEliminar = fila.querySelector("button");
+    btnEliminar.addEventListener("click", async () => {
+        if (confirm("¿Estás seguro de eliminar este producto?")) {
+            try {
+                await productoService.eliminarProducto(id);
+                fila.remove();
+                alert("Producto eliminado");
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Error al eliminar");
+            }
+        }
     });
     
     return fila;
 };
 
+const escapeHtml = (text) => {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+};
+
 const tableProd = document.querySelector("[data-table-products]");
-productoService.listaProductos().then((data) => {
-    data.forEach(({ id, nombre, descripcion, precio }) => {
-        const fila = crearFila(id, nombre, descripcion, precio);
-        tableProd.appendChild(fila);
+
+productoService.listaProductos()
+    .then((data) => {
+        data.forEach(({ id, nombre, precio }) => {
+            const fila = crearFila(id, nombre, precio);
+            tableProd.appendChild(fila);
+        });
+    })
+    .catch((error) => {
+        console.error("Error:", error);
+        alert("Error al cargar productos");
     });
-});
