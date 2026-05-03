@@ -21,7 +21,6 @@ try {
     http_response_code(500);
     die(json_encode(["error" => "Conexión mala: " . $e->getMessage()]));
 }
-*/
 
 // Conexión a PostgreSQL (Supabase) - Descomenta esta sección para usar Supabase
 /*
