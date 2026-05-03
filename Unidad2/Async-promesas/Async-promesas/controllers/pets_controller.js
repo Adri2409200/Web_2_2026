@@ -20,7 +20,7 @@ const crearFilaMascota = async (nombre, raza, edad, peso, dueñoId, id) => {
         <td class="td">
             <ul class="table__button-control">
                 <li>
-                    <a href="../screens/editar_pet.html?id=${id}" class="simple-button simple-button--edit">
+                    <a href="../screens/editar_pets.html?id=${id}" class="simple-button simple-button--edit">
                         Editar
                     </a>
                 </li>
