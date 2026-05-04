@@ -48,6 +48,7 @@ export const petService = {
 */
 
 // Supabase
+/*
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 const SUPABASE_URL = "https://uqduducofrhycmruurai.supabase.co";
 const SUPABASE_KEY = "sb_publishable_8go3I9fTQGMN-A08cEiSgg_dC5rhvgA";
@@ -90,6 +91,46 @@ const obtenerDueño = async (idDueño) => {
     if (error) throw error;
     return data;
 };
+*/
+
+//-----CON SQL SERVER (API REST)-----//
+const API_URL_MASCOTAS = "http://localhost:3000/api/mascotas";
+const API_URL_CLIENTES = "http://localhost:3000/api/clientes";
+
+const listaMascotas = () => 
+    fetch(API_URL_MASCOTAS)
+        .then(respuesta => respuesta.json())
+        .catch(error => {
+            console.error("Error al listar mascotas:", error);
+            return [];
+        });
+
+const crearMascota = (nombre, raza, edad, peso, dueñoId) => {
+    const id = crypto.randomUUID();
+    return fetch(API_URL_MASCOTAS, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, nombre, raza, edad: Number(edad), peso: Number(peso), dueñoId })
+    });
+};
+
+const eliminarMascota = (id) => {
+    return fetch(`${API_URL_MASCOTAS}/${id}`, { method: "DELETE" });
+};
+
+const detalleMascota = (id) => 
+    fetch(`${API_URL_MASCOTAS}/${id}`).then(respuesta => respuesta.json());
+
+const actualizarMascota = (nombre, raza, edad, peso, dueñoId, id) => {
+    return fetch(`${API_URL_MASCOTAS}/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre, raza, edad: Number(edad), peso: Number(peso), dueñoId })
+    });
+};
+
+const obtenerDueño = (idDueño) => 
+    fetch(`${API_URL_CLIENTES}/${idDueño}`).then(respuesta => respuesta.json());
 
 export const petService = {
     listaMascotas,

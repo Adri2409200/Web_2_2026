@@ -75,6 +75,7 @@ export const clientService = {
 */
 
 // Supabase
+/*
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 const SUPABASE_URL = "https://uqduducofrhycmruurai.supabase.co";
 const SUPABASE_KEY = "sb_publishable_8go3I9fTQGMN-A08cEiSgg_dC5rhvgA";
@@ -110,6 +111,38 @@ const actualizarCliente = async (nombre, email, id) => {
     const { data, error } = await supabase.from('clientes').update({ nombre, email }).eq('id', id).select();
     if (error) throw error;
     return data[0];
+};
+*/
+
+//-----CON SQL SERVER -----//
+const API_URL = "http://localhost:3000/api/clientes";
+
+const listar_clientes = () => 
+    fetch(API_URL).then(respuesta => respuesta.json());
+
+const crearCliente = (nombre, email) => {
+    const id = crypto.randomUUID();
+    return fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, nombre, email })
+    });
+};
+
+const eliminarCliente = (id) => {
+    return fetch(`${API_URL}/${id}`, { method: "DELETE" });
+};
+
+const detalleCliente = (id) => {
+    return fetch(`${API_URL}/${id}`).then(respuesta => respuesta.json());
+};
+
+const actualizarCliente = (nombre, email, id) => {
+    return fetch(`${API_URL}/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre, email })
+    });
 };
 
 export const clientService = {

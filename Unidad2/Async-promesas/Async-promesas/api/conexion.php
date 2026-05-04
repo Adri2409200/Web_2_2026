@@ -1,5 +1,4 @@
 <?php
-// Enviar headers CORS siempre, incluso en errores
 function send_cors_headers() {
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
@@ -8,12 +7,10 @@ function send_cors_headers() {
 }
 send_cors_headers();
 
-// Manejar preflight OPTIONS
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit();
 }
-// Conexión a MySQL (XAMPP) - Descomenta esta sección para usar XAMPP
 try {
     $conn = new PDO("mysql:host=127.0.0.1;dbname=doguito_petshop", "root", "");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

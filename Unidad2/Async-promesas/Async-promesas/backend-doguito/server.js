@@ -9,8 +9,7 @@ app.use(express.json());//uso de archivos json
 //get listar
 app.get("/clientes", async (req, res) =>{
     try{
-        const result = await pool.query("SELECT * FROM clientes");
-        const rows = result.rows || result[0];
+        const [rows] = await pool.query("SELECT * FROM clientes");
         res.json(rows);
     }
     catch(err){
@@ -21,8 +20,7 @@ app.get("/clientes", async (req, res) =>{
 //get por id
 app.get("/clientes/:id", async (req, res) =>{
     try{
-        const result = await pool.query("SELECT * FROM clientes WHERE id = ?", [req.params.id]);
-        const rows = result.rows || result[0];
+        const [rows] = await pool.query("SELECT FROM clientes WHERE id = ?", [req.params.id]);
         //si no encuentra el cliente, devuelve un error 404
         if(rows.length === 0){
             res.status(404).json({error: "Cliente no encontrado"});
