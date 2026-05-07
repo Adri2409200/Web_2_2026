@@ -93,7 +93,8 @@ const obtenerDueño = async (idDueño) => {
 };
 */
 
-//-----CON SQL SERVER (API REST)-----//
+//-----CON SQL SERVER -----//
+/*
 const API_URL_MASCOTAS = "http://localhost:3000/api/mascotas";
 const API_URL_CLIENTES = "http://localhost:3000/api/clientes";
 
@@ -140,3 +141,56 @@ export const petService = {
     actualizarMascota,
     obtenerDueño
 };
+*/
+//-----CON EXPRESS (MySQL)-----//
+const BASE_URL = "http://localhost:3001";
+
+const petService = {
+    listaMascotas: async () => {
+        try {
+            const res = await fetch(`${BASE_URL}/mascotas`);
+            return res.json();
+        } catch (error) {
+            console.error("Error al listar mascotas:", error);
+            return [];
+        }
+    },
+    
+    detalleMascota: async (id) => {
+        const res = await fetch(`${BASE_URL}/mascotas/${id}`);
+        return res.json();
+    },
+    
+    crearMascota: async (nombre, raza, edad, peso, dueñoId) => {
+        const id = crypto.randomUUID();
+        const res = await fetch(`${BASE_URL}/mascotas`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id, nombre, edad: Number(edad), raza, peso: Number(peso), dueñoId })
+        });
+        return res.json();
+    },
+    
+    actualizarMascota: async (nombre, raza, edad, peso, dueñoId, id) => {
+        const res = await fetch(`${BASE_URL}/mascotas/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nombre, edad: Number(edad), raza, peso: Number(peso), dueñoId })
+        });
+        return res.json();
+    },
+    
+    eliminarMascota: async (id) => {
+        const res = await fetch(`${BASE_URL}/mascotas/${id}`, {
+            method: "DELETE"
+        });
+        return res.json();
+    },
+    
+    obtenerDueño: async (idDueño) => {
+        const res = await fetch(`${BASE_URL}/clientes/${idDueño}`);
+        return res.json();
+    }
+};
+
+export { petService };

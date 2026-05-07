@@ -113,7 +113,7 @@ const actualizarCliente = async (nombre, email, id) => {
     return data[0];
 };
 */
-
+/*
 //-----CON SQL SERVER -----//
 const API_URL = "http://localhost:3000/api/clientes";
 
@@ -144,11 +144,51 @@ const actualizarCliente = (nombre, email, id) => {
         body: JSON.stringify({ nombre, email })
     });
 };
+*/
+//-----CON EXPRESS (MySQL)-----//
+const BASE_URL = "http://localhost:3001";
 
-export const clientService = {
-    listar_clientes,
-    crearCliente,
-    eliminarCliente,
-    detalleCliente,
-    actualizarCliente
+const clientService = {
+    // GET - listar todos los clientes
+    listar_clientes: async () => {
+        const res = await fetch(`${BASE_URL}/clientes`);
+        return res.json();
+    },
+    
+    // GET - cliente por id (para editar)
+    detalleCliente: async (id) => {
+        const res = await fetch(`${BASE_URL}/clientes/${id}`);
+        return res.json();
+    },
+    
+    // POST - crear cliente
+    crearCliente: async (nombre, email) => {
+        const id = crypto.randomUUID();
+        const res = await fetch(`${BASE_URL}/clientes`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id, nombre, email })
+        });
+        return res.json();
+    },
+    
+    // PUT - actualizar cliente (id, nombre, email)
+    actualizarCliente: async (nombre, email, id) => {
+        const res = await fetch(`${BASE_URL}/clientes/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nombre, email })
+        });
+        return res.json();
+    },
+    
+    // DELETE - eliminar cliente
+    eliminarCliente: async (id) => {
+        const res = await fetch(`${BASE_URL}/clientes/${id}`, {
+            method: "DELETE"
+        });
+        return res.json();
+    }
 };
+
+export { clientService };

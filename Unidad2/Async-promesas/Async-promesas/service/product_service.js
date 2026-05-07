@@ -82,7 +82,7 @@ const actualizarProducto = async (nombre, precio, id) => {
     return data[0];
 };
 */
-
+/*
 //-----CON SQL SERVER -----//
 const API_URL = "http://localhost:3000/api/productos";
 
@@ -125,3 +125,51 @@ export const productoService = {
     detalleProducto,
     actualizarProducto
 };
+*/
+//-----CON EXPRESS (MySQL)-----//
+const BASE_URL = "http://localhost:3001";
+
+const productoService = {
+    // GET - listar todos los productos
+    listaProductos: async () => {
+        const res = await fetch(`${BASE_URL}/productos`);
+        return res.json();
+    },
+    
+    // GET - producto por id (para editar)
+    detalleProducto: async (id) => {
+        const res = await fetch(`${BASE_URL}/productos/${id}`);
+        return res.json();
+    },
+    
+    // POST - crear producto
+    crearProducto: async (nombre, precio) => {
+        const id = crypto.randomUUID();
+        const res = await fetch(`${BASE_URL}/productos`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id, nombre, precio: Number(precio) })
+        });
+        return res.json();
+    },
+    
+    // PUT - actualizar producto
+    actualizarProducto: async ( nombre, precio, id) => {
+        const res = await fetch(`${BASE_URL}/productos/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nombre, precio: Number(precio) })
+        });
+        return res.json();
+    },
+    
+    // DELETE - eliminar producto
+    eliminarProducto: async (id) => {
+        const res = await fetch(`${BASE_URL}/productos/${id}`, {
+            method: "DELETE"
+        });
+        return res.json();
+    }
+};
+
+export { productoService };

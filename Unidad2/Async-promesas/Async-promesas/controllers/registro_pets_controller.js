@@ -34,18 +34,13 @@ formulario.addEventListener("submit", async (evento) => {
     }
     
     try {
-        const response = await petService.crearMascota(nombre, raza, edad, peso, dueñoId);
+        const resultado = await petService.crearMascota(nombre, raza, edad, peso, dueñoId);
+        console.log("Resultado:", resultado);
         
-        console.log("Respuesta del servidor:", response);
-        
-        if (response.ok) {
-            const data = await response.json();
-            console.log("Mascota creada:", data);
-            window.location.href = "./registro_completado_mascota.html";
+        if (resultado.error) {
+            alert("Error: " + resultado.error);
         } else {
-            const error = await response.text();
-            console.error("Error del servidor:", error);
-            alert("Error del servidor: " + error);
+            window.location.href = "./registro_completado_mascota.html";
         }
     } catch (error) {
         console.error("Error:", error);
