@@ -108,7 +108,7 @@ app.post('/mascotas', async (req, res) => {
     try {
         const { id, nombre, edad, raza, peso, dueñoId } = req.body;
         await pool.query(
-            'INSERT INTO mascotas (id, nombre, edad, raza, peso, dueñoId) VALUES (?, ?, ?, ?, ?, ?)',
+            'INSERT INTO mascotas (id, nombre, edad, raza, peso, dueñold) VALUES (?, ?, ?, ?, ?, ?)',
             [id, nombre, edad, raza, peso, dueñoId]
         );
         res.status(201).json({ id, nombre, edad, raza, peso, dueñoId });
@@ -122,7 +122,7 @@ app.put('/mascotas/:id', async (req, res) => {
     try {
         const { nombre, edad, raza, peso, dueñoId } = req.body;
         await pool.query(
-            'UPDATE mascotas SET nombre = ?, edad = ?, raza = ?, peso = ?, dueñoId = ? WHERE id = ?',
+            'UPDATE mascotas SET nombre = ?, edad = ?, raza = ?, peso = ?, dueñold = ? WHERE id = ?',
             [nombre, edad, raza, peso, dueñoId, req.params.id]
         );
         const [rows] = await pool.query('SELECT * FROM mascotas WHERE id = ?', [req.params.id]);

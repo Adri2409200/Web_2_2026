@@ -19,13 +19,18 @@ const obtenerInformacion = async () => {
 
     try {
         const mascota = await petService.detalleMascota(id);
+        if (!mascota || mascota.error) {
+            console.error("Mascota no encontrada:", mascota);
+            window.location.href = "./error.html";
+            return;
+        }
         nombre.value = mascota.nombre;
         raza.value = mascota.raza;
         edad.value = mascota.edad;
         peso.value = mascota.peso;
-        dueñoId.value = mascota.dueñoId;
+        dueñoId.value = mascota.dueñold;  // nombre real de la columna en la BD
     } catch (error) {
-        console.error("Error:", error);
+        console.error("Error al cargar mascota:", error);
         window.location.href = "./error.html";
     }
 };

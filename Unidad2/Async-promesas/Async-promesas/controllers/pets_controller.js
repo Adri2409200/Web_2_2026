@@ -72,7 +72,7 @@ const cargarMascotas = async () => {
                 mascota.raza, 
                 mascota.edad, 
                 mascota.peso, 
-                mascota.dueñoId, 
+                mascota.dueñold,   // nombre real de la columna en la BD
                 mascota.id
             );
             table.appendChild(fila);
